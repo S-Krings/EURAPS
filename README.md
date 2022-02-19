@@ -29,7 +29,8 @@ The following steps enable readers to build and run their own EURAPS version:
 3. Aquire a Vuforia license and license key (see https://developer.vuforia.com/license-manager)
 4. Download Vuforia into the Unity Project via the Package Manager.
 5. Include your new license key into the Vuforia Configuration file (Windows>Vuforia Configuration)
-6. Build and Run on your preferred device.
+6. Import the Image Target file (Assets>Resources>EURAPSTrackers.unitypackage) into your project and add it to the ImageTarget in the NXTSimulationTemplate (Assets>RosSharp>Scenes>NXTSimulationTemplate.unity).
+7. Build and Run on your preferred device.
 
 ### Lego NXT Software
 In our demo, we program a Lego NXT Mindstorms robot. This requires a special software for recieving and interpreting the Bluetooth messages with the program code. Once a Lego NXT is prepared, it can be used as long as necessary.
