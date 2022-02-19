@@ -1,4 +1,8 @@
-# EURAPS
+<p align="left">
+  <img src="EURAPS_Logo3.png" width="350" title="hover text"
+</p>
+ 
+#  
 EURAPS is an End-User Robot programming environment with AR-assisted Path Planning Strategies. It enables users without robot- or even general programming experience to program robots by themselves. This is archieved by offering interaction approaches that spare users from mentally converting between different coordinate spaces, as weell as offering an in-place simulation and direct building to the robot. EURAPS is available on the Microsoft HoloLens and on Android smartphones.
 ## Contents
 * [Features and Preview](#features-and-preview)
