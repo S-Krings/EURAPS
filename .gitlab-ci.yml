@@ -1,0 +1,119 @@
+image: gableroux/unity3d:2019.3.0f6
+
+stages:
+  - build_and_test
+  - deploy
+
+# If you are looking for a place where to add 'UNITY_LICENSE_FILE' and other secrets, please visit your project's gitlab page:
+# settings > CI/CD > Variables instead
+variables:
+  BUILD_NAME: ExampleProjectName
+  UNITY_ACTIVATION_FILE: ./unity3d.alf
+  SUBFOLDERPATH: SPEAREDV2.0
+  DOCKER_DRIVER: overlay
+
+.unity_before_script: &unity_before_script
+  before_script:
+    - cd $SUBFOLDERPATH
+    - chmod +x ./ci/before_script.sh && ./ci/before_script.sh
+
+.cache: &cache
+  cache:
+    key: "$CI_PROJECT_NAMESPACE-$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG-$TEST_PLATFORM"
+    paths:
+      - Library/
+# run this job when you need to request a license
+# you may need to follow activation steps from documentation
+get-activation-file:
+  when: manual
+  stage: build_and_test
+  script:
+    - cd $SUBFOLDERPATH
+    - chmod +x ./ci/get_activation_file.sh && ./ci/get_activation_file.sh
+  artifacts:
+    paths:
+      - $UNITY_ACTIVATION_FILE
+    expire_in: 10 min # Expiring this as artifacts may contain sensitive data and should not be kept public
+
+.test: &test
+  stage: build_and_test
+  <<: *unity_before_script
+  <<: *cache
+  script:
+    - chmod +x ./ci/test.sh && ./ci/test.sh
+  artifacts:
+    paths:
+      - $(pwd)/$SUBFOLDERPATH/$TEST_PLATFORM-results.xml
+      - $(pwd)/$SUBFOLDERPATH/$TEST_PLATFORM-junit-results.xml
+    reports:
+      junit: $(pwd)/$SUBFOLDERPATH/$TEST_PLATFORM-junit-results.xml
+  #    - $(pwd)/$SUBFOLDERPATH/$TEST_PLATFORM-coverage/
+  # https://gitlab.com/gableroux/unity3d-gitlab-ci-example/-/issues/83
+  # you may need to remove or replace these to fit your need if you are using your own runners
+  # coverage: /<Linecoverage>(.*?)</Linecoverage>/
+
+.build: &build
+  stage: build_and_test
+  <<: *unity_before_script
+  <<: *cache
+  script:
+    - chmod +x ./ci/build.sh && ./ci/build.sh
+  artifacts:
+    paths:
+      - ./$SUBFOLDERPATH/Builds/
+  # https://gitlab.com/gableroux/unity3d-gitlab-ci-example/-/issues/83
+  # you may need to remove or replace these to fit your need if you are using your own runners
+
+build-android:
+  <<: *build
+  image: "hub.cs.upb.de/skrings/varobotprojectgroup/unity-builder-android"
+  only: 
+    - tags
+  variables:
+    BUILD_TARGET: Android
+    BUNDLE_VERSION_CODE: $CI_PIPELINE_IID
+    BUILD_APP_BUNDLE: "false"
+
+test-playmode:
+  <<: *test
+  variables:
+    TEST_PLATFORM: playmode
+
+#test-editmode:
+#  <<: *test
+#  variables:
+#    TEST_PLATFORM: editmode
+#  only: 
+#    changes:
+#      - SPEAREDV2.0/
+
+build-physicsEngine:
+  stage: build_and_test
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  script:
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --context PhysicsEngine --dockerfile PhysicsEngine/Dockerfile --destination hub.cs.upb.de/skrings/varobotprojectgroup/varobot-physics-engine:ci-build
+  only:
+    changes:
+        - "PhysicsEngine/Dockerfile"
+        - "PhysicsEngine/start_simulation.sh"
+        - "PhysicsEngine/startup.sh"
+# deploy strategy
+deploy-physicsEngine:
+  stage: build_and_test
+  script: 
+    - apt update
+    - apt-get install -y curl
+    - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+    - chmod +x ./kubectl
+    - sed -i "s/CI/${CI_COMMIT_SHORT_SHA}/g" k8s-configs/k8s-deployments/physics-engine-deployment.yml
+    - ./kubectl -n varobotprojectgroup-7275-varobot-k8s delete physics-engine-deployment
+    - ./kubectl apply -f k8s-configs/k8s-deployments/physics-engine-deployment.yml
+  when: manual
+  environment:
+    name: varobot-k8s
+    url: https://varobot-k8s.cs.upb.de
+
