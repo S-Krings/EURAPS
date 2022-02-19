@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e54a85d75d4e340bc966d6d511dcde, type: 3}
+  m_Name: BruteMove
+  m_EditorClassIdentifier: 
+  ArgumentModifier:
+  - {fileID: 11400000, guid: 7ee054b59b5cb9c409256801e5fabb70, type: 2}
+  isLegoCommand: 1
+  Lcommand: 0
+  isDobotCommand: 0
+  Dcommand: 0
+  name: bruteMove
+  Signature: {fileID: 11400000, guid: 81d6e99eb54f3ed42a6b56393b3fb487, type: 2}

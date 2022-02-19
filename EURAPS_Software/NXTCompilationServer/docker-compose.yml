@@ -1,0 +1,9 @@
+version: '3.1'
+services:
+  compileserver:
+    ports:
+      - 3000:3000
+    image: hub.cs.upb.de/skrings/varobotprojectgroup/compile-server
+    build: .
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"

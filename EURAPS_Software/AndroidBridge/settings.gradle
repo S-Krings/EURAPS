@@ -1,0 +1,3 @@
+rootProject.name = "AndroidBridge"
+include ':app'
+include ':BluetoothBridge'

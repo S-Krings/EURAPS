@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4c4168b822bb448bf0406f6f8df8d5, type: 3}
+  m_Name: MoveModDraw
+  m_EditorClassIdentifier: 
+  targetSelectorPrefab: {fileID: 8976208029810131059, guid: c24412073267ed8469080219cfc0a82a,
+    type: 3}
+  targetSelectorPrefabHL: {fileID: 4712147733331281114, guid: d2a86d700150ebf41927d9922cd62a5a,
+    type: 3}
+  waypointMaterial: {fileID: 2100000, guid: a958e0bd753d18946b5cc3c8c5fbcf73, type: 2}

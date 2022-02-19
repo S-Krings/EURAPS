@@ -1,0 +1,25 @@
+1. To install and use the application:
+	Step 1:
+		- Open Unity project.
+
+	Step 2:
+		- Build and Run.
+
+2. To develop, re-build, and reconfigure the plugin.
+	Step 1:
+		- Import Android Studio project in your local Android Studio IDE.
+		- Make changes to the code.
+		- Click: Build > Make Module 'NXTBluetoothPlugin.app' 
+
+	Step 2:
+		- Pre-requisites:
+			- LeJOS libraries.
+			- 32-bit Eclipse IDE.
+		- Import NXT Navigator code in Eclipse.
+		- Make changes to the code.
+		- Right click BTNavigator.java > Run as > LeJOS NXT Program.
+
+	Step 3:
+		- Import Unity project.
+		- Make changes in NXTManager.cs script.
+		- Build and Run to install.

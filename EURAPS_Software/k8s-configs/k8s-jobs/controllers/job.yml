@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: lejosbuilder1606704706869
+spec:
+  ttlSecondsAfterFinished: 10
+  template:
+    spec:
+      volumes:
+        - name: build1606704706869
+          hostPath:
+            path: /host/files/1606704706869
+            type: Directory
+      containers:
+      - name: lejosbuilder1606704706869
+        image: lejosbuilder
+        imagePullPolicy: Never
+        volumeMounts:
+         - name: build1606704706869
+           mountPath: /root/build
+      restartPolicy: Never
+
+

@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa394d323a3d9f5408b4bdc3336799c1, type: 3}
+  m_Name: ClawMod
+  m_EditorClassIdentifier: 
+  ClawDown: {fileID: 11400000, guid: a1e72d57d06dc064e8468699772ab394, type: 2}
+  ClawUp: {fileID: 11400000, guid: 566f61427c3ddd442a1f0a910a1d4007, type: 2}

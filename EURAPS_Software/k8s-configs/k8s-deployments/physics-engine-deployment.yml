@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: physics-engine-deployment
+  labels:
+    app: ros
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ros
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 33%
+  template:
+    metadata:
+      labels:
+        app: ros
+    spec:
+      imagePullSecrets:
+        - name: registry-credentials
+      containers:
+        - name: physics-engine
+          image: hub.cs.upb.de/skrings/varobotprojectgroup/varobot-physics-engine:ci-build
+          imagePullPolicy: Always
+          stdin: true 
+          tty: true
+          ports:
+            - containerPort: 9090

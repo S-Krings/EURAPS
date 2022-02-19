@@ -1,0 +1,2 @@
+Use this link to get lejos into an x32/x86 eclipse
+http://lejos.sourceforge.net/tools/eclipse/plugin/nxj

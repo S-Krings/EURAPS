@@ -1,0 +1,31 @@
+{
+  "name": "nxtcompilationserver",
+  "version": "0.0.1",
+  "description": "a server for requesting the compilation of lejos code\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D ()\u001b[D\u001b[C\u001b[C\u001b\u001b[Dlego mindstorm nxt) code",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.cs.uni-paderborn.de/skrings/varobotprojectgroup"
+  },
+  "keywords": [
+    "AR",
+    "VR",
+    "compiler",
+    "service",
+    "java",
+    "lejos",
+    "nxt",
+    "lego",
+    "mindstorm"
+  ],
+  "author": "VaroBot Project Group - Paderborn University",
+  "license": "MIT",
+  "dependencies": {
+    "@kubernetes/client-node": "^0.13.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}
