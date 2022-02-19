@@ -20,30 +20,31 @@ A detailed walkthrough of EURAPS can be found in the evaluation section in the u
 
 ### Preview Video
 This video gives a short overview of EURAPS' features in use.
-
+(Coming Soon)
 
 ## Installation and Development
 This section will describe the steps to install and run EURAPS.
 
 ### Unity Project and Vuforia
-Since we used the third-party software Vuforia, it is not legally possible to publish EURAPS as-is. We had to remove the Vuforia Code from the published projects. However, this is easily reversible by using an own Vuforia license and download.
+Since we used the third-party software Vuforia, copyrights prohibit us from open-sourcing EURAPS as-is. We had to remove the Vuforia Code from the published projects. However, this is easily reversible by using an own Vuforia license and download.
+  
 The following steps enable readers to build and run their own EURAPS version:
-1. Download the EURAPS_Software folder.
-2. Import EURAPS_Unity as a Unity project.
-3. Aquire a Vuforia license and license key (see https://developer.vuforia.com/license-manager)
-4. Download Vuforia into the Unity Project via the Package Manager.
-5. Include your new license key into the Vuforia Configuration file (Windows>Vuforia Configuration)
-6. Import the Image Target file (Assets>Resources>EURAPSTrackers.unitypackage) into your project and add it to the ImageTarget in the NXTSimulationTemplate (Assets>RosSharp>Scenes>NXTSimulationTemplate.unity).
+1. Download the [EURAPS_Software](EUPRAS_Software) folder.
+2. Import [EURAPS_Unity](EUPRAS_Software/EURAPS_Unity) into [Unity](https://unity.com/download) as a Unity project.
+3. Acquire a [Vuforia license](https://developer.vuforia.com/license-manager) and license key.
+4. Download Vuforia into the Unity Project via the Unity Package Manager.
+5. Include your new license key into the Vuforia Configuration file (found in Unity under Windows>Vuforia Configuration)
+6. Import the Image Target file (Assets>Resources>EURAPSTrackers.unitypackage) into your project (double click and select import) and add it to the ImageTarget in the NXTSimulationTemplate (Assets>RosSharp>Scenes>NXTSimulationTemplate.unity).
 7. Build and Run on your preferred device.
 
 ### Lego NXT Software
 In our demo, we program a Lego NXT Mindstorms robot. This requires a special software for recieving and interpreting the Bluetooth messages with the program code. Once a Lego NXT is prepared, it can be used as long as necessary.
 
-1. Aquire the Lejos Library (https://lejos.sourceforge) and a 32-bit version of the Eclipse IDE.
-2. Import the "BTNavigator.java"(EURAPS_Software/LeJOS_Code_for_NXT_Robot/BTNavigator.java) into Eclipse.
+1. Acquire the [Lejos Library](https://lejos.sourceforge) and a 32-bit version of the Eclipse IDE (e.g. [Eclipse Java 2018-09](https://www.eclipse.org/downloads/packages/release/2018-09/r/eclipse-ide-java-developers)).
+2. Import the [BTNavigator.java](EURAPS_Software/LeJOS_Code_for_NXT_Robot/BTNavigator.java) into Eclipse.
 3. Connect the Lego NXT to the computer.
 4. Use the Lejos tool to flash Lejos onto the NXT.
 5. Via Eclipse, run the BTNavigator on the NXT (BTNavigator.java>Run as>LeJOS NXT Program)
 
 ### Run
-When all devices are equipped with the correct software, remember to pair the Lego NXT robot with the AR programming device. Then, once the app is started, EURAPS will take care of the rest and the robot programming can begin.
+When all devices are equipped with the correct software, remember to Bluetooth-pair the Lego NXT robot with the AR programming device. Then, once the app is started, EURAPS will take care of the rest and the robot programming can begin.
