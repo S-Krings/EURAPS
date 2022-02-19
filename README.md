@@ -19,9 +19,9 @@ In addition to this, it is possible at the click of a button to simulate created
 A detailed walkthrough of EURAPS can be found in the evaluation section in the usage instructions (Drawing, Waypoints). Of course, both methids can be freely combined.
 
 ### Preview Video
-This video gives a short overview of EURAPS' features in use.
-(Coming Soon)
-
+This gif gives a short overview of EURAPS' features in use.
+![video](Documentation/Figures//EURAPS_Demo_Video.gif)
+  
 ## Installation and Development
 This section will describe the steps to install and run EURAPS.
 
