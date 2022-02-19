@@ -1,5 +1,5 @@
 <p align="left">
-  <img src="EURAPS_Logo3.png" width="350" title="hover text"
+  <img src="Documentation/Figures/EURAPS_Logo3.png" width="350" title="hover text"
 </p>
  
 #  
