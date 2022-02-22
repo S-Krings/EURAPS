@@ -11,7 +11,7 @@ EURAPS is an End-User Robot programming environment with AR-assisted Path Planni
   * [Unity Project and Vuforia](unity-project-and-vuforia)
   * [Lego NXT Software](lego-nXT-software)
   * [Run](run)
- 
+
 ## Features and Preview
 In EURAPS, we use Augmented Reality (AR) to let users do their programming directly in the robot's coordinate space. To make the interaction as intuitive as possible, we offer different approaches to plan/program robot paths: the Drawing method, where the user can draw the path in one go, and the Waypoints method, where they can create commands for the individual steps on the robot path. Both approaches work by moving a sphere in AR to select targets or draw a path. Created path programs are represented in a block-based manner for better overview and editing.
 
