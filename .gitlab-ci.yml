@@ -9,7 +9,7 @@ stages:
 variables:
   BUILD_NAME: ExampleProjectName
   UNITY_ACTIVATION_FILE: ./unity3d.alf
-  SUBFOLDERPATH: SPEAREDV2.0
+  SUBFOLDERPATH: EURAPS_Unity
   DOCKER_DRIVER: overlay
 
 .unity_before_script: &unity_before_script
@@ -85,7 +85,7 @@ test-playmode:
 #    TEST_PLATFORM: editmode
 #  only: 
 #    changes:
-#      - SPEAREDV2.0/
+#      - EURAPS_Unity/
 
 build-physicsEngine:
   stage: build_and_test
